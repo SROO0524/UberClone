@@ -44,13 +44,37 @@ class LoginController: UIViewController {
         return UITextField().textField(withPlaceholder: "PassWord", isSecureTextEentry: true)
     }()
     
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Log In", for: .normal)
+        button.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
+        button.backgroundColor = .mainBlue
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        return button
+    }()
+    
+// 하단에 가입 버튼 만들기
+    let dontHaveAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+            NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes:
+            [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
+             NSAttributedString.Key.foregroundColor: UIColor.mainBlue]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        return button
+    }()
+    
 // MARK: Life Cycle
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.init(red: 25/255, green: 25/255, blue: 25/255, alpha: 1)
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor)
@@ -63,15 +87,19 @@ class LoginController: UIViewController {
         view.addSubview(passwordContainerView)
         passwordContainerView.anchor(top: emailContainerView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 16, paddingLeft: 16, paddingRight: 16, height: 50 )
         
-// StackView 생성: emailContainerView,passwordContainerView 스택뷰로 묶음
-        let stack = UIStackView(arrangedSubviews: [emailContainerView,passwordContainerView])
+// StackView 생성: emailContainerView,passwordContainerView,loginButton 스택뷰로 묶음
+        let stack = UIStackView(arrangedSubviews: [emailContainerView,passwordContainerView,loginButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 16
+        stack.spacing = 24
 
         view.addSubview(stack)
         stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
                      paddingTop:  40, paddingLeft:  16, paddingRight:  16)
+        
+        view.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.centerX(inView: view)
+        dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, height: 32)
         
     }
     
