@@ -13,6 +13,31 @@ import UIKit
 
 extension UIView {
     
+    func inputContainerView(image: UIImage, textField: UITextField) -> UIView {
+        let view = UIView()
+        
+        let imageView = UIImageView()
+        imageView.image = image
+        imageView.alpha = 0.87
+        view.addSubview(imageView)
+        imageView.centerY(inView: view)
+        imageView.anchor(left: view.leftAnchor, paddingLeft: 8, width: 24 , height: 24)
+        
+        view.addSubview(textField)
+        textField.centerY(inView: view)
+        textField.anchor(left: imageView.rightAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingLeft: 8, paddingBotton:  8)
+        
+// 로그인 아래 선 
+        
+        let seperateView = UIView()
+        seperateView.backgroundColor = .lightGray
+        view.addSubview(seperateView)
+        seperateView.anchor(left: view.leftAnchor, bottom:  view.bottomAnchor, right: view.rightAnchor, paddingLeft:
+            9, height: 0.75)
+        
+        return view
+        
+    }
     //nil 값을 준이유: 각 ui 마다 필요한 anchor를 제외하고는 값을 따로 주지 않아도 되는 경우가 있는데 이 경우를 위해 nil 값으로 설정
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
@@ -62,4 +87,20 @@ extension UIView {
         centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
+}
+
+// MARK: 로그인/회원가입 필드에서 중복되는 코드 최소화 하기 위해 Extension을 따로 만들어줌
+extension UITextField {
+    
+    func textField(withPlaceholder placeholder: String, isSecureTextEentry: Bool) -> UITextField {
+        let tf = UITextField()
+        tf.borderStyle = .none
+        tf.font = UIFont.systemFont(ofSize: 16)
+        tf.textColor = .white
+        tf.keyboardAppearance = .dark
+        tf.isSecureTextEntry = isSecureTextEentry
+        //custom placeholder 하는 방법
+        tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        return tf
+    }
 }
