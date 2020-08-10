@@ -125,7 +125,10 @@ class SignUpController : UIViewController {
             let values = ["email" : email, "fullname" : fullname, "accountType" : accountTypeIndex] as [String : Any]
             
             Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
-                print("successfully register user and saved data..")
+                
+                guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else {return}
+                controller.configureUI()
+                self.dismiss(animated: true, completion: nil)
             }
             
         }
