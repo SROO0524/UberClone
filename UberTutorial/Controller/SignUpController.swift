@@ -116,7 +116,7 @@ class SignUpController : UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                print("failed to register user with error\(error)")
+                print("DEBUG: failed to register user with error\(error.localizedDescription)")
                 return
             }
             
