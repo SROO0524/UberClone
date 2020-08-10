@@ -44,16 +44,15 @@ class LoginController: UIViewController {
         return UITextField().textField(withPlaceholder: "PassWord", isSecureTextEentry: true)
     }()
     
-    private let loginButton: UIButton = {
-        let button = UIButton()
+
+    
+    private let loginButton: AuthButton = {
+        let button = AuthButton(type: .system)
         button.setTitle("Log In", for: .normal)
-        button.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
-        button.backgroundColor = .mainBlue
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return button
     }()
+
     
 // 하단에 가입 버튼 만들기
     let dontHaveAccountButton: UIButton = {

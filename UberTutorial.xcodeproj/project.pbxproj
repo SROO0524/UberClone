@@ -14,6 +14,7 @@
 		DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D5A24DD36B000C2221A /* LoginContrroller.swift */; };
 		DE235D5D24DD420100C2221A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D5C24DD420100C2221A /* Extension.swift */; };
 		DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40724DEC38C004F0881 /* SignUpController.swift */; };
+		DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40924E12C61004F0881 /* AuthButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DE235D5A24DD36B000C2221A /* LoginContrroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContrroller.swift; sourceTree = "<group>"; };
 		DE235D5C24DD420100C2221A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DE7BD40724DEC38C004F0881 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		DE7BD40924E12C61004F0881 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		DE235D5824DD35AE00C2221A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DE7BD40924E12C61004F0881 /* AuthButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */,
+				DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */,
 				DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */,
 				DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */,
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
