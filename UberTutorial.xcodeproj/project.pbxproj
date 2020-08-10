@@ -18,6 +18,7 @@
 		DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40924E12C61004F0881 /* AuthButton.swift */; };
 		DE7BD40E24E13B5B004F0881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */; };
 		DE7BD41024E14AC6004F0881 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40F24E14AC6004F0881 /* HomeController.swift */; };
+		DE7BD41224E1906B004F0881 /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41124E1906B004F0881 /* LocationInputActivationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DE7BD40924E12C61004F0881 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE7BD40F24E14AC6004F0881 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		DE7BD41124E1906B004F0881 /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				DE7BD40924E12C61004F0881 /* AuthButton.swift */,
+				DE7BD41124E1906B004F0881 /* LocationInputActivationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */,
 				DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */,
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
+				DE7BD41224E1906B004F0881 /* LocationInputActivationView.swift in Sources */,
 				DE235D5D24DD420100C2221A /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,6 +19,9 @@ class HomeController: UIViewController {
     //현재 위치를 알리기 위해 변수 생성
     private let locationManager = CLLocationManager()
     
+    // 지도 위에 검색 바 
+    private let InputActivationView = LocationInputActivationView()
+    
     //    MARK: LifeCycle
 
     override func viewDidLoad() {
@@ -54,6 +57,11 @@ class HomeController: UIViewController {
     
     func configureUI() {
         configureMapView()
+        
+        view.addSubview(InputActivationView)
+        InputActivationView.centerX(inView: view)
+        InputActivationView.setDimensions(height: 50, width: view.frame.width - 64)
+        InputActivationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
     }
     
     func configureMapView() {
