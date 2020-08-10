@@ -17,6 +17,7 @@
 		DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40724DEC38C004F0881 /* SignUpController.swift */; };
 		DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40924E12C61004F0881 /* AuthButton.swift */; };
 		DE7BD40E24E13B5B004F0881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */; };
+		DE7BD41024E14AC6004F0881 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40F24E14AC6004F0881 /* HomeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DE7BD40724DEC38C004F0881 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		DE7BD40924E12C61004F0881 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE7BD40F24E14AC6004F0881 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				DE235D5A24DD36B000C2221A /* LoginContrroller.swift */,
 				DE7BD40724DEC38C004F0881 /* SignUpController.swift */,
+				DE7BD40F24E14AC6004F0881 /* HomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */,
 				DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */,
+				DE7BD41024E14AC6004F0881 /* HomeController.swift in Sources */,
 				DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */,
 				DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */,
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
