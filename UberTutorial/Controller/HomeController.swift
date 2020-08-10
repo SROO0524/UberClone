@@ -62,6 +62,13 @@ class HomeController: UIViewController {
         InputActivationView.centerX(inView: view)
         InputActivationView.setDimensions(height: 50, width: view.frame.width - 64)
         InputActivationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        InputActivationView.alpha = 0
+        InputActivationView.delegate = self
+        
+        //Indicator 에 애니메이션 주기! 
+        UIView.animate(withDuration: 2) {
+            self.InputActivationView.alpha = 1
+        }
     }
     
     func configureMapView() {
@@ -107,4 +114,12 @@ extension HomeController : CLLocationManagerDelegate {
             locationManager.requestAlwaysAuthorization()
         }
     }
+}
+
+extension HomeController: LocationInputActivationViewDelegate {
+    func presentLocationInputView() {
+        print("DEBUG: Handle")
+    }
+    
+    
 }
