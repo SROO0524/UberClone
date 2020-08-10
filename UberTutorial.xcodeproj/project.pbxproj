@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860EB8766BC7B01507913852 /* Pods_UberTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4580E6F38DDAB6E1238E9FFF /* Pods_UberTutorial.framework */; };
 		DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D3F24DD350800C2221A /* AppDelegate.swift */; };
 		DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D4124DD350800C2221A /* SceneDelegate.swift */; };
 		DE235D4924DD350C00C2221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE235D4824DD350C00C2221A /* Assets.xcassets */; };
@@ -15,9 +16,13 @@
 		DE235D5D24DD420100C2221A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D5C24DD420100C2221A /* Extension.swift */; };
 		DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40724DEC38C004F0881 /* SignUpController.swift */; };
 		DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40924E12C61004F0881 /* AuthButton.swift */; };
+		DE7BD40E24E13B5B004F0881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4580E6F38DDAB6E1238E9FFF /* Pods_UberTutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UberTutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9817DB683C7038A89D0D2100 /* Pods-UberTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberTutorial.release.xcconfig"; path = "Target Support Files/Pods-UberTutorial/Pods-UberTutorial.release.xcconfig"; sourceTree = "<group>"; };
+		CCB883814D6CA09C74656099 /* Pods-UberTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UberTutorial.debug.xcconfig"; path = "Target Support Files/Pods-UberTutorial/Pods-UberTutorial.debug.xcconfig"; sourceTree = "<group>"; };
 		DE235D3C24DD350800C2221A /* UberTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UberTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE235D3F24DD350800C2221A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE235D4124DD350800C2221A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,7 @@
 		DE235D5C24DD420100C2221A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DE7BD40724DEC38C004F0881 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		DE7BD40924E12C61004F0881 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				860EB8766BC7B01507913852 /* Pods_UberTutorial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD9929B0C01063B770C37755 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CCB883814D6CA09C74656099 /* Pods-UberTutorial.debug.xcconfig */,
+				9817DB683C7038A89D0D2100 /* Pods-UberTutorial.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B46CBC7966F9A9B30E894A50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4580E6F38DDAB6E1238E9FFF /* Pods_UberTutorial.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DE235D3324DD350800C2221A = {
 			isa = PBXGroup;
 			children = (
 				DE235D3E24DD350800C2221A /* UberTutorial */,
 				DE235D3D24DD350800C2221A /* Products */,
+				AD9929B0C01063B770C37755 /* Pods */,
+				B46CBC7966F9A9B30E894A50 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +96,7 @@
 				DE235D4824DD350C00C2221A /* Assets.xcassets */,
 				DE235D4A24DD350C00C2221A /* LaunchScreen.storyboard */,
 				DE235D4D24DD350C00C2221A /* Info.plist */,
+				DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */,
 			);
 			path = UberTutorial;
 			sourceTree = "<group>";
@@ -120,9 +147,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE235D5024DD350C00C2221A /* Build configuration list for PBXNativeTarget "UberTutorial" */;
 			buildPhases = (
+				6BEA1D04FDBA5A03D90E00BF /* [CP] Check Pods Manifest.lock */,
 				DE235D3824DD350800C2221A /* Sources */,
 				DE235D3924DD350800C2221A /* Frameworks */,
 				DE235D3A24DD350800C2221A /* Resources */,
+				33F03F58B2FBFDE61474A201 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,10 +202,53 @@
 			files = (
 				DE235D4C24DD350C00C2221A /* LaunchScreen.storyboard in Resources */,
 				DE235D4924DD350C00C2221A /* Assets.xcassets in Resources */,
+				DE7BD40E24E13B5B004F0881 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33F03F58B2FBFDE61474A201 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UberTutorial/Pods-UberTutorial-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UberTutorial/Pods-UberTutorial-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UberTutorial/Pods-UberTutorial-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BEA1D04FDBA5A03D90E00BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UberTutorial-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DE235D3824DD350800C2221A /* Sources */ = {
@@ -322,6 +394,7 @@
 		};
 		DE235D5124DD350C00C2221A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCB883814D6CA09C74656099 /* Pods-UberTutorial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,6 +412,7 @@
 		};
 		DE235D5224DD350C00C2221A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9817DB683C7038A89D0D2100 /* Pods-UberTutorial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

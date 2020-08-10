@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpController : UIViewController {
     
@@ -70,6 +71,7 @@ class SignUpController : UIViewController {
         let button = AuthButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -104,6 +106,31 @@ class SignUpController : UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text else {return}
+        guard let password = passWordTextField.text else {return}
+        guard let fullname = fullNameTextField.text else {return}
+        let accountTypeIndex = accountTypeSegmentControl.selectedSegmentIndex
+        
+        print(email)
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("failed to register user with error\(error)")
+                return
+            }
+            
+            guard let uid = result?.user.uid else { return }
+            
+            let values = ["email" : email, "fullname" : fullname, "accountType" : accountTypeIndex] as [String : Any]
+            
+            Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
+                print("successfully register user and saved data..")
+            }
+            
+        }
+    }
+    
 // MARK: Helper Functions
     
     func configureUI() { // viewdidLoad 안에 있는 코드를 하단 func 으로 따로 빼서 코드의 간소화함. 전보다 보기 훨씬편함!!
@@ -115,7 +142,7 @@ class SignUpController : UIViewController {
         titleLabel.centerX(inView: view)
         
         
-        let stack = UIStackView(arrangedSubviews: [emailContainerView,passwordContainerView,fullNameContainerView,accountTypeContainerView,signUPButton])
+        let stack = UIStackView(arrangedSubviews: [emailContainerView,fullNameContainerView,passwordContainerView,accountTypeContainerView,signUPButton])
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = 24
