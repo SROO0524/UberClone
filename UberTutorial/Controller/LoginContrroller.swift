@@ -50,6 +50,7 @@ class LoginController: UIViewController {
         button.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
         button.backgroundColor = .mainBlue
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         return button
     }()
@@ -64,6 +65,10 @@ class LoginController: UIViewController {
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes:
             [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
              NSAttributedString.Key.foregroundColor: UIColor.mainBlue]))
+        
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        
+        
         button.setAttributedTitle(attributedTitle, for: .normal)
         return button
     }()
@@ -74,12 +79,28 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+        
+    }
+    
+
+    
+// MARK: Selectors / Actions
+    
+    @objc func handleShowSignUp(){
+        let controller = SignUpController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+//    MARK: Helper Functions
+    func configureUI() { // viewdidLoad 안에 있는 코드를 하단 func 으로 따로 빼서 코드의 간소화함. 전보다 보기 훨씬편함!!
+        configureNavigationBar() //navigationController 속성안에 configureNavigation 속성을 넣어 코드를 간편하게 만듬
         view.backgroundColor = .backgroundColor
         
         view.addSubview(titleLabel)
         titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor)
         titleLabel.centerX(inView: view)
-
+        
         
         view.addSubview(emailContainerView)
         emailContainerView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16, height: 50 )
@@ -88,11 +109,12 @@ class LoginController: UIViewController {
         passwordContainerView.anchor(top: emailContainerView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 16, paddingLeft: 16, paddingRight: 16, height: 50 )
         
 // StackView 생성: emailContainerView,passwordContainerView,loginButton 스택뷰로 묶음
+        
         let stack = UIStackView(arrangedSubviews: [emailContainerView,passwordContainerView,loginButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 24
-
+        
         view.addSubview(stack)
         stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
                      paddingTop:  40, paddingLeft:  16, paddingRight:  16)
@@ -103,8 +125,8 @@ class LoginController: UIViewController {
         
     }
     
-// 상단 상태바 글자 흰색으로 바꾸기
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    func configureNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
     }
 }

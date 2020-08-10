@@ -13,6 +13,7 @@
 		DE235D4C24DD350C00C2221A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE235D4A24DD350C00C2221A /* LaunchScreen.storyboard */; };
 		DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D5A24DD36B000C2221A /* LoginContrroller.swift */; };
 		DE235D5D24DD420100C2221A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D5C24DD420100C2221A /* Extension.swift */; };
+		DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40724DEC38C004F0881 /* SignUpController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DE235D4D24DD350C00C2221A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE235D5A24DD36B000C2221A /* LoginContrroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContrroller.swift; sourceTree = "<group>"; };
 		DE235D5C24DD420100C2221A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DE7BD40724DEC38C004F0881 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				DE235D5A24DD36B000C2221A /* LoginContrroller.swift */,
+				DE7BD40724DEC38C004F0881 /* SignUpController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */,
 				DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */,
 				DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */,
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
