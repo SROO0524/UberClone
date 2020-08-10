@@ -53,8 +53,16 @@ class HomeController: UIViewController {
     //    MARK: Helper Function
     
     func configureUI() {
+        configureMapView()
+    }
+    
+    func configureMapView() {
         view.addSubview(mapView)
         mapView.frame = view.frame
+        // 현재 위치를 showsUserLocation 으로 파란색 닷으로 활성화
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        
     }
 }
  
