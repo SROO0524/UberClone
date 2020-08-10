@@ -16,10 +16,14 @@ class HomeController: UIViewController {
     
     private let mapView = MKMapView()
     
+    //현재 위치를 알리기 위해 변수 생성
+    private let locationManager = CLLocationManager()
+    
     //    MARK: LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        enableLocationSevices()
         checkIfUserIsLoggedIn()
 //        signOut()
     }
@@ -47,8 +51,44 @@ class HomeController: UIViewController {
     }
     
     //    MARK: Helper Function
+    
     func configureUI() {
         view.addSubview(mapView)
         mapView.frame = view.frame
+    }
+}
+ 
+// MARK: LocationServices
+extension HomeController : CLLocationManagerDelegate {
+    
+    
+    func enableLocationSevices() {
+        locationManager.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+            
+        case .notDetermined: // 현재 위치를 찾을 수 없을때 위치 사용 권한을 요청함
+            print("DEBUG: Not Determined..")
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedAlways: // 위치를 항상 업데이트, 정확하게
+            print("DEBUG: Auth always.")
+            locationManager.startUpdatingLocation()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        case .authorizedWhenInUse: //사용 권한 설정 후에 앱이 사용중이지 않을때도 정보 줄래?
+            print("DEBUG: Auth When in use..")
+            locationManager.requestAlwaysAuthorization()
+        @unknown default:
+            break
+        }
+    }
+    
+    //
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        if status == .authorizedWhenInUse {
+            locationManager.requestAlwaysAuthorization()
+        }
     }
 }
