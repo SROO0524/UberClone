@@ -99,7 +99,10 @@ class HomeController: UIViewController {
             self.locationInputView.alpha = 1
         }) { _ in
             print("DEBUG: Present table view ..")
-            
+        // 상단 Indicator 가 뜬 후 아래 커스텀 tableView가 뜨도록 설정
+            UIView.animate(withDuration: 0.3, animations: {
+                self.tableView.frame.origin.y = self.locationInputViewHeight
+            })
         }
     }
     
@@ -113,7 +116,6 @@ class HomeController: UIViewController {
         let height = view.frame.height - locationInputViewHeight
         tableView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: height)
         
-        tableView.backgroundColor = .red
         
         view.addSubview(tableView)
     }
@@ -168,10 +170,16 @@ extension HomeController: LocationInputActivationViewDelegate {
 
 extension HomeController : LocationInputViewDelegate {
     func dismissLocationInputView() {
-        UIView.animate(withDuration: 0.3, animations: {self.locationInputView.alpha = 0
+        // 뒤로 가기 눌렀을때 table view 가 나오지 않도록
+        locationInputView.removeFromSuperview()
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.locationInputView.alpha = 0
+            self.tableView.frame.origin.y = self.view.frame.height
         }){ _ in
             // 애니메이션이 끝나면 다시 inoputactivationView 가 나옴!!
-            UIView.animate(withDuration: 0.3, animations: {self.InputActivationView.alpha = 1})
+            UIView.animate(withDuration: 0.3, animations: {
+                self.InputActivationView.alpha = 1})
         }
     }
     
