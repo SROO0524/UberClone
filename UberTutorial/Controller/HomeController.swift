@@ -112,6 +112,8 @@ class HomeController: UIViewController {
         
         tableView.register(LocationCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 60
+        // footterview: 5줄말 표현하려고 할때 아래 줄을 공백으로 두는것!!
+        tableView.tableFooterView = UIView()
         
         let height = view.frame.height - locationInputViewHeight
         tableView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: height)
@@ -171,13 +173,14 @@ extension HomeController: LocationInputActivationViewDelegate {
 extension HomeController : LocationInputViewDelegate {
     func dismissLocationInputView() {
         // 뒤로 가기 눌렀을때 table view 가 나오지 않도록
-        locationInputView.removeFromSuperview()
+        
         
         UIView.animate(withDuration: 0.3, animations: {
             self.locationInputView.alpha = 0
             self.tableView.frame.origin.y = self.view.frame.height
         }){ _ in
             // 애니메이션이 끝나면 다시 inoputactivationView 가 나옴!!
+            self.locationInputView.removeFromSuperview()
             UIView.animate(withDuration: 0.3, animations: {
                 self.InputActivationView.alpha = 1})
         }
@@ -186,10 +189,29 @@ extension HomeController : LocationInputViewDelegate {
     
 }
 
+//    MARK: UITableViewDelegate/DataSource
+
 extension HomeController : UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Test"
     }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if section == 0 {
+//            return 2
+//        }
+//
+//        return 5 > 아래 코드와 동일한 내용임!!
+        
+        return section == 0 ? 2 : 5
+    }
+    
+    // tableView cell 안에 들어갈 내용은!! 커스텀 셀!!
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as!
