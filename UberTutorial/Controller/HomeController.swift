@@ -21,6 +21,7 @@ class HomeController: UIViewController {
     
     // 지도 위에 검색 바 
     private let InputActivationView = LocationInputActivationView()
+    private let locationInputView = LocationInputView()
     
     //    MARK: LifeCycle
 
@@ -79,6 +80,21 @@ class HomeController: UIViewController {
         mapView.userTrackingMode = .follow
         
     }
+    
+    // where to? Indicator 클릭시 나오는 View & 애니메이션 효과 주기
+    func configureLocationInputView() {
+        locationInputView.delegate = self
+        view.addSubview(locationInputView)
+        locationInputView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor,height:  200)
+        locationInputView.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.locationInputView.alpha = 1
+        }) { _ in
+            print("DEBUG: Present table view ..")
+            
+        }
+    }
 }
  
 // MARK: LocationServices
@@ -116,9 +132,25 @@ extension HomeController : CLLocationManagerDelegate {
     }
 }
 
+//    MARK: LocationInputActivationViewDelegate
+
+
 extension HomeController: LocationInputActivationViewDelegate {
     func presentLocationInputView() {
-        print("DEBUG: Handle")
+        
+        InputActivationView.alpha = 0
+        configureLocationInputView()
+    }
+ 
+}
+
+extension HomeController : LocationInputViewDelegate {
+    func dismissLocationInputView() {
+        UIView.animate(withDuration: 0.3, animations: {self.locationInputView.alpha = 0
+        }){ _ in
+            // 애니메이션이 끝나면 다시 inoputactivationView 가 나옴!!
+            UIView.animate(withDuration: 0.3, animations: {self.InputActivationView.alpha = 1})
+        }
     }
     
     
