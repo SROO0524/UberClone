@@ -26,6 +26,8 @@ class HomeController: UIViewController {
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
     
+    
+    
     private final let locationInputViewHeight : CGFloat = 200
     
     //    MARK: LifeCycle
@@ -34,10 +36,15 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         enableLocationSevices()
         checkIfUserIsLoggedIn()
+        fetchUserData()
 //        signOut()
     }
     
     //    MARK: API
+    
+    func fetchUserData() {
+        Service.shared.fetchUserData()
+    }
     // 로그인이 되어 있으면 HomeVieW 로 이동하고, 로그인이 안되어 있으면 LoginView 나오게함.
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {

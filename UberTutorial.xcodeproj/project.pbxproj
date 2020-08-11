@@ -21,6 +21,7 @@
 		DE7BD41224E1906B004F0881 /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41124E1906B004F0881 /* LocationInputActivationView.swift */; };
 		DE7BD41424E2544E004F0881 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41324E2544E004F0881 /* LocationInputView.swift */; };
 		DE7BD41624E270B2004F0881 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41524E270B1004F0881 /* LocationCell.swift */; };
+		DE7BD41824E2E218004F0881 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41724E2E218004F0881 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		DE7BD41124E1906B004F0881 /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
 		DE7BD41324E2544E004F0881 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		DE7BD41524E270B1004F0881 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		DE7BD41724E2E218004F0881 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		DE235D5424DD359800C2221A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DE7BD41724E2E218004F0881 /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */,
 				DE7BD41624E270B2004F0881 /* LocationCell.swift in Sources */,
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
+				DE7BD41824E2E218004F0881 /* Service.swift in Sources */,
 				DE7BD41224E1906B004F0881 /* LocationInputActivationView.swift in Sources */,
 				DE235D5D24DD420100C2221A /* Extension.swift in Sources */,
 			);
