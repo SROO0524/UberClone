@@ -21,6 +21,10 @@ class LocationInputView: UIView {
     
     //    MARK: Properties
     
+    var user: User? {
+        didSet {titleLabel.text = user?.fullname}
+    }
+    
     private let backButton : UIButton = {
         let button = UIButton()
         //withRenderingMode: 이미지를 Display에 나타낼때 (.alwaysOriginal : 원본이미지로 보여주기)
@@ -29,7 +33,7 @@ class LocationInputView: UIView {
         return button
     }()
     
-    let titleLabel : UILabel = {
+    private let titleLabel : UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 16)

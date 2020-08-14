@@ -26,11 +26,9 @@ class HomeController: UIViewController {
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
     
-    private var fullname: String? {
-        didSet {locationInputView.titleLabel.text = fullname}
+    private var user : User? {
+        didSet {locationInputView.user = user}
     }
-    
-    
     
     private final let locationInputViewHeight : CGFloat = 200
     
@@ -48,8 +46,8 @@ class HomeController: UIViewController {
     
     //Firebase에 이름을 가져오기 위해 fetch로 데이터에 접근해 fullname 정보를 가지고옴
     func fetchUserData() {
-        Service.shared.fetchUserData { (fullname) in
-            self.fullname = fullname
+        Service.shared.fetchUserData { (user) in
+            self.user = user
         }
     }
     // 로그인이 되어 있으면 HomeVieW 로 이동하고, 로그인이 안되어 있으면 LoginView 나오게함.

@@ -17,13 +17,17 @@ struct Service {
     static let shared = Service()
     let currentUid = Auth.auth().currentUser?.uid
     
-    func fetchUserData(completion: @escaping(String) -> Void) {
+    func fetchUserData(completion: @escaping(User) -> Void) {
         // 현재 로그인한 사용자의 정보만 가져오기 위해서!!
         print("DEBUG: Current uid is \(currentUid)")
         REF_USERS.child(currentUid!).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {return}
-            guard let fullname = dictionary["fullname"] as? String else {return}
-            completion(fullname)
+            let user = User(dictionary: dictionary)
+            
+            print("DEBUG: User email is \(user.email)")
+            print("DEBUG: User fullname is \(user.fullname)")
+            
+            completion(user)
         }
     }
 }
