@@ -23,6 +23,7 @@
 		DE7BD41624E270B2004F0881 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41524E270B1004F0881 /* LocationCell.swift */; };
 		DE7BD41824E2E218004F0881 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41724E2E218004F0881 /* Service.swift */; };
 		DE7BD46024E687F4004F0881 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD45F24E687F4004F0881 /* User.swift */; };
+		DE7BD46224E699D3004F0881 /* Locatiohandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD46124E699D3004F0881 /* Locatiohandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		DE7BD41524E270B1004F0881 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		DE7BD41724E2E218004F0881 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DE7BD45F24E687F4004F0881 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DE7BD46124E699D3004F0881 /* Locatiohandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatiohandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				DE235D5C24DD420100C2221A /* Extension.swift */,
+				DE7BD46124E699D3004F0881 /* Locatiohandler.swift */,
 			);
 			path = Utilies;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
 				DE7BD46024E687F4004F0881 /* User.swift in Sources */,
 				DE7BD41824E2E218004F0881 /* Service.swift in Sources */,
+				DE7BD46224E699D3004F0881 /* Locatiohandler.swift in Sources */,
 				DE7BD41224E1906B004F0881 /* LocationInputActivationView.swift in Sources */,
 				DE235D5D24DD420100C2221A /* Extension.swift in Sources */,
 			);

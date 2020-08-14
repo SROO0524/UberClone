@@ -8,10 +8,13 @@
 
 import UIKit
 import Firebase
+import GeoFire
 
 class SignUpController : UIViewController {
     
 //    MARK: Properties
+    
+    private var location = Locationhandler.shared.locationManager.location
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "UBER"
@@ -98,6 +101,9 @@ class SignUpController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        
+        
     }
     
 // MARK: Selector & @objc
@@ -124,17 +130,36 @@ class SignUpController : UIViewController {
             
             let values = ["email" : email, "fullname" : fullname, "accountType" : accountTypeIndex] as [String : Any]
             
-            Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
+            var geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+            
+            // accountType이 1일 경우 ( Driver 일경우 , 아래와 같이 위치 정보를 받아온다)
+            if accountTypeIndex == 1{
+                let geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+                guard let location = self.location else {return}
+                geofire.setLocation(location, forKey: uid) { (error) in
+                    self.uploadUserDataAndShowHomeController(uid: uid, values: values)
+                }
                 
-                guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else {return}
-                controller.configureUI()
-                self.dismiss(animated: true, completion: nil)
             }
+            
+            self.uploadUserDataAndShowHomeController(uid: uid, values: values)
+            
             
         }
     }
     
 // MARK: Helper Functions
+    
+    func uploadUserDataAndShowHomeController(uid: String, values: [String: Any]) {
+        REF_USERS.child("users").child(uid).updateChildValues(values) { (error, ref) in
+            guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else {return}
+            controller.configureUI()
+            self.dismiss(animated: true, completion: nil)
+        }
+
+        
+    }
+    
     
     func configureUI() { // viewdidLoad 안에 있는 코드를 하단 func 으로 따로 빼서 코드의 간소화함. 전보다 보기 훨씬편함!!
 
