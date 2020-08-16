@@ -26,6 +26,7 @@ class HomeController: UIViewController {
     private let InputActivationView = LocationInputActivationView()
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
+    private var searchResults = [MKPlacemark]()
     
     private var user : User? {
         didSet {locationInputView.user = user}
@@ -173,6 +174,32 @@ class HomeController: UIViewController {
     }
 }
 
+//    MARK:  Map Helper Functions
+
+private extension HomeController {
+    func searchBy(naturalLanguageQuery: String, completion: @escaping([MKPlacemark]) -> Void) {
+        var results = [MKPlacemark]()
+        
+        //Mapview에 있는 지역에서 검색
+        let request = MKLocalSearch.Request()
+        request.region = mapView.region
+        request.naturalLanguageQuery = naturalLanguageQuery
+        
+        //실제로 검색하는 메소드
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            guard let response = response else {return}
+            
+            response.mapItems.forEach ({ item in
+                results.append(item.placemark)
+            })
+            
+            completion(results)
+        }
+    }
+}
+
+
 //    MARK: MKMapViewDelegate
  
 // 지도 위 pin 이미지 커스텀하는 Delegate : Reusable Annotation 덕분에 매번 핀을 복사하여 사용하지 않아도 된다.
@@ -226,8 +253,17 @@ extension HomeController: LocationInputActivationViewDelegate {
     }
  
 }
+//    MARK: LocationInputViewDelegate
 
 extension HomeController : LocationInputViewDelegate {
+    func executeSearch(query: String) {
+        searchBy(naturalLanguageQuery: query) { (results) in
+            self.searchResults = results
+            self.tableView.reloadData()
+        }
+    }
+    
+    
     func dismissLocationInputView() {
         // 뒤로 가기 눌렀을때 table view 가 나오지 않도록
         
@@ -264,8 +300,8 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
 //        }
 //
 //        return 5 > 아래 코드와 동일한 내용임!!
-        
-        return section == 0 ? 2 : 5
+        //Search Result 의 수대로 리스팅됨!
+        return section == 0 ? 2 : searchResults.count
     }
     
     // tableView cell 안에 들어갈 내용은!! 커스텀 셀!!

@@ -11,6 +11,7 @@ import UIKit
 // protocol > HomeViewController 로 delegate 하여 기능 구현하기 위함!!
 protocol LocationInputViewDelegate: class {
     func dismissLocationInputView()
+    func executeSearch(query: String)
 }
 
 //    MARK: Where To? indicator View를 클릭했을때 나타나는 상단 흰색 뷰
@@ -79,6 +80,7 @@ class LocationInputView: UIView {
         tf.backgroundColor = .lightGray
         tf.returnKeyType = .search
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.delegate = self
         
         let paddingView = UIView()
         paddingView.setDimensions(height: 30, width: 8)
@@ -140,4 +142,14 @@ class LocationInputView: UIView {
         delegate?.dismissLocationInputView()
     }
     
+}
+
+//    MARK:  UITextFieldDelegate
+// 도착지의 TextField 에 텍스트를 입력했을때 Return 받는 함수
+extension LocationInputView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let query = textField.text else {return false}
+        delegate?.executeSearch(query: query)
+        return true
+    }
 }
