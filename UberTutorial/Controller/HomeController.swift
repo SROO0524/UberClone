@@ -11,6 +11,7 @@ import Firebase
 import MapKit
 
 private let reuseIdentifier = "LocationCell"
+private let annotationIdentifier = "DriverAnnotation"
 
 class HomeController: UIViewController {
     
@@ -40,7 +41,7 @@ class HomeController: UIViewController {
         checkIfUserIsLoggedIn()
         fetchUserData()
         fetchDrivers()
-        signOut()
+//        signOut()
     }
     
     //    MARK: API
@@ -114,6 +115,7 @@ class HomeController: UIViewController {
         // 현재 위치를 showsUserLocation 으로 파란색 닷으로 활성화
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        mapView.delegate = self
         
     }
     
@@ -151,7 +153,22 @@ class HomeController: UIViewController {
         view.addSubview(tableView)
     }
 }
+
+//    MARK: MKMapViewDelegate
  
+// 지도 위 pin 이미지 커스텀하는 Delegate : Reusable Annotation 덕분에 매번 핀을 복사하여 사용하지 않아도 된다.
+extension HomeController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? DriverAnnotation {
+            let view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier )
+            view.image = #imageLiteral(resourceName: "chevron-sign-to-right")
+            return view
+        }
+        return nil
+    }
+}
+
 // MARK: LocationServices
 extension HomeController  {
     
