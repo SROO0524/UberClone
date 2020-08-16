@@ -12,8 +12,10 @@ struct User {
     let accountType: Int
     //손님과 기사 모두 이름, 이메일, 계정타입은 가지고 있지만 위치 정보는 있을수도 있고 없을수도 있기 떄문에 옵셔널 타입으로 지정
     var location : CLLocation?
+    let uid : String
     
-    init(dictionary: [String: Any]) {
+    init(uid: String, dictionary: [String: Any]) {
+        self.uid = uid
         self.fullname = dictionary["fullname"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.accountType = dictionary["accountType"] as? Int ?? 0

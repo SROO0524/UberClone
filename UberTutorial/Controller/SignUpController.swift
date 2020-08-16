@@ -151,7 +151,7 @@ class SignUpController : UIViewController {
 // MARK: Helper Functions
     
     func uploadUserDataAndShowHomeController(uid: String, values: [String: Any]) {
-        REF_USERS.child("users").child(uid).updateChildValues(values) { (error, ref) in
+        REF_USERS.child(uid).updateChildValues(values) { (error, ref) in
             guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else {return}
             controller.configureUI()
             self.dismiss(animated: true, completion: nil)

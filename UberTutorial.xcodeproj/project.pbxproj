@@ -24,6 +24,7 @@
 		DE7BD41824E2E218004F0881 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD41724E2E218004F0881 /* Service.swift */; };
 		DE7BD46024E687F4004F0881 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD45F24E687F4004F0881 /* User.swift */; };
 		DE7BD46224E699D3004F0881 /* Locatiohandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD46124E699D3004F0881 /* Locatiohandler.swift */; };
+		DE7BD46424E9425F004F0881 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD46324E9425F004F0881 /* DriverAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		DE7BD41724E2E218004F0881 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		DE7BD45F24E687F4004F0881 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE7BD46124E699D3004F0881 /* Locatiohandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatiohandler.swift; sourceTree = "<group>"; };
+		DE7BD46324E9425F004F0881 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				DE7BD45F24E687F4004F0881 /* User.swift */,
+				DE7BD46324E9425F004F0881 /* DriverAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */,
 				DE7BD41024E14AC6004F0881 /* HomeController.swift in Sources */,
 				DE7BD41424E2544E004F0881 /* LocationInputView.swift in Sources */,
+				DE7BD46424E9425F004F0881 /* DriverAnnotation.swift in Sources */,
 				DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */,
 				DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */,
 				DE7BD41624E270B2004F0881 /* LocationCell.swift in Sources */,
