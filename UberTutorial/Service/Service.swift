@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import GeoFire
 
 let DB_REF = Database.database().reference()
 // REF_USERS >> DB에 있는 Reference 중에 Child 데이터 중에서 users 를 찾아라!
@@ -20,18 +21,27 @@ struct Service {
     static let shared = Service()
     
     
-    func fetchUserData(completion: @escaping(User) -> Void) {
+    func fetchUserData(uid: String, completion: @escaping(User) -> Void) {
         // 현재 로그인한 사용자의 정보만 가져오기 위해서!!
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        print("DEBUG: Current uid is \(currentUid)")
-        REF_USERS.child(currentUid).observeSingleEvent(of: .value) { (snapshot) in
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {return}
             let user = User(dictionary: dictionary)
-            
-            print("DEBUG: User email is \(user.email)")
-            print("DEBUG: User fullname is \(user.fullname)")
-            
             completion(user)
+        }
+    }
+    
+    func fetchDrivers(location: CLLocation, completion : @escaping(User) -> Void){
+        let geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+        
+        REF_DRIVER_LOCATIONS.observe(.value) { (snapshot) in
+            geofire.query(at: location, withRadius: 50).observe(.keyEntered, with: {(uid, location) in
+                self.fetchUserData(uid: uid, completion: { (user) in
+                    var driver = user
+                    driver.location = location
+                    completion(driver)
+                })
+                
+            })
         }
     }
 }

@@ -39,17 +39,27 @@ class HomeController: UIViewController {
         enableLocationSevices()
         checkIfUserIsLoggedIn()
         fetchUserData()
-        signOut()
+        fetchDrivers()
+//        signOut()
     }
     
     //    MARK: API
     
     //Firebase에 이름을 가져오기 위해 fetch로 데이터에 접근해 fullname 정보를 가지고옴
     func fetchUserData() {
-        Service.shared.fetchUserData { (user) in
+        guard let currentUid = Auth.auth().currentUser?.uid else {return}
+        Service.shared.fetchUserData(uid: currentUid) { (user) in
             self.user = user
         }
     }
+    
+    func fetchDrivers() {
+        guard let location = locationManager?.location else { return }
+        Service.shared.fetchDrivers(location: location) { user in
+            print("DEBUG: Driver is \(user.location)")
+        }
+    }
+    
     // 로그인이 되어 있으면 HomeVieW 로 이동하고, 로그인이 안되어 있으면 LoginView 나오게함.
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
