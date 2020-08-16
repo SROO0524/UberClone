@@ -39,9 +39,6 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         enableLocationSevices()
         checkIfUserIsLoggedIn()
-        fetchUserData()
-        fetchDrivers()
-//        signOut()
     }
     
     //    MARK: API
@@ -87,7 +84,8 @@ class HomeController: UIViewController {
                 self.present(nav, animated:  true, completion:  nil)
             }
         } else { // 로그인 되어 있을떄 MapView가 나타나도록 함
-            configureUI()
+            configure()
+
         }
     }
     
@@ -99,12 +97,18 @@ class HomeController: UIViewController {
                 let nav = UINavigationController(rootViewController: LoginController())
                 self.present(nav, animated:  true, completion:  nil)
             }
-        } catch let error {
+        } catch {
             print("DEBUG: error Signing out")
         }
     }
     
     //    MARK: Helper Function
+    
+    func configure() {
+        configureUI()
+        fetchUserData()
+        fetchDrivers()
+    }
     
     func configureUI() {
         configureMapView()

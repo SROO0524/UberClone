@@ -105,7 +105,7 @@ class LoginController: UIViewController {
             }
             // 로그인에 성공하면 로그인 화면이 Dismiss 되고 , rootviewController 를 HomeController로 받아서 HomeController View가 나옴!
             guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else {return}
-            controller.configureUI()
+            controller.configure()
             self.dismiss(animated: true, completion: nil)
         }
     }
