@@ -60,7 +60,22 @@ class HomeController: UIViewController {
             guard let coordinate = driver.location?.coordinate else { return }
             let annotation = DriverAnnotation(uid: driver.uid, coordinate: coordinate)
             
-            self.mapView.addAnnotation(annotation)
+            // Driver의 위치가 변동되면 핀의 위치가 업데이트됨
+            var driverIsVisible : Bool {
+                return self.mapView.annotations.contains(where: {annotation -> Bool in
+                    guard let driverAnno = annotation as? DriverAnnotation else { return false }
+                    if driverAnno.uid == driver.uid {
+                        driverAnno.updateAnnotationPosition(withCoordinate: coordinate)
+                        return true
+                    }
+                    return false
+                })
+            }
+            
+            if !driverIsVisible {
+              self.mapView.addAnnotation(annotation)
+            }
+            
         }
     }
     
