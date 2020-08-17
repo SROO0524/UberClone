@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import MapKit
 
 class LocationCell: UITableViewCell {
 
     //    MARK: properties
     
+    //검색 후 테이블 뷰 셀안에 들어가는 데이터 세팅
+    var placemark: MKPlacemark? {
+        didSet {
+            titlaLabel.text = placemark?.name
+            addressLabel.text = placemark?.address
+
+        }
+    }
+    
     private let titlaLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "123 main Street"
         return label
     }()
     
@@ -23,7 +32,6 @@ class LocationCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
-        label.text = "123 main Street Washington DC"
         return label
     }()
     
