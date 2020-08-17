@@ -13,6 +13,15 @@ import MapKit
 private let reuseIdentifier = "LocationCell"
 private let annotationIdentifier = "DriverAnnotation"
 
+private enum ActionButtonConfiguration {
+    case showMenu
+    case dismissActionview
+    
+    init(){
+        self = .showMenu
+    }
+}
+
 class HomeController: UIViewController {
     
     //    MARK: Properties
@@ -27,12 +36,21 @@ class HomeController: UIViewController {
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
     private var searchResults = [MKPlacemark]()
+    private final let locationInputViewHeight : CGFloat = 200
+    private var actionButtonConfig = ActionButtonConfiguration()
     
     private var user : User? {
         didSet {locationInputView.user = user}
     }
     
-    private final let locationInputViewHeight : CGFloat = 200
+    private let actionButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "baseline_menu_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    
     
     //    MARK: LifeCycle
 
@@ -40,6 +58,23 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         enableLocationSevices()
         checkIfUserIsLoggedIn()
+    }
+    
+//    MARK:  Selector
+    
+    @objc func actionButtonPressed() {
+        switch actionButtonConfig {
+        case .showMenu:
+            print("DEBUG: Handle show menu..")
+        case .dismissActionview:
+            print("DEBUG: Handle dismissal..")
+            
+            UIView.animate(withDuration: 0.3) {
+                self.InputActivationView.alpha = 1
+                self.actionButton.setImage(#imageLiteral(resourceName: "baseline_menu_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
+                self.actionButtonConfig = .showMenu
+            }
+        }
     }
     
     //    MARK: API
@@ -114,10 +149,13 @@ class HomeController: UIViewController {
     func configureUI() {
         configureMapView()
         
+        view.addSubview(actionButton)
+        actionButton.anchor(top:view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 20, paddingLeft: 16, width: 30, height: 30 )
+        
         view.addSubview(InputActivationView)
         InputActivationView.centerX(inView: view)
         InputActivationView.setDimensions(height: 50, width: view.frame.width - 64)
-        InputActivationView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        InputActivationView.anchor(top: actionButton.bottomAnchor, paddingTop: 32)
         InputActivationView.alpha = 0
         InputActivationView.delegate = self
         
@@ -179,10 +217,6 @@ class HomeController: UIViewController {
             self.locationInputView.alpha = 0
             self.tableView.frame.origin.y = self.view.frame.height
             self.locationInputView.removeFromSuperview()
-            UIView.animate(withDuration: 0.5, animations: {
-                self.InputActivationView.alpha = 1
-                
-            })
         }, completion: completion)
     }
 }
@@ -279,7 +313,13 @@ extension HomeController : LocationInputViewDelegate {
     
     func dismissLocationInputView() {
         // 뒤로 가기 눌렀을때 table view 가 나오지 않도록
-        dismissLocationView()
+        dismissLocationView { _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.InputActivationView.alpha = 1
+                
+            })
+
+        }
     }
     
     
@@ -321,6 +361,9 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
     //셀이 선택됐을때 실행할 액션
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPlacemark = searchResults[indexPath.row]
+        actionButton.setImage(#imageLiteral(resourceName: "baseline_arrow_back_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
+        actionButtonConfig = .dismissActionview
+        
         dismissLocationView { _ in
             let annotation = MKPointAnnotation()
             annotation.coordinate = selectedPlacemark.coordinate
