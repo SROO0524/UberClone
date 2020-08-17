@@ -172,6 +172,19 @@ class HomeController: UIViewController {
         
         view.addSubview(tableView)
     }
+    
+    // 뒤로가기를 눌렀을떄 InputView가 사라짐
+    func dismissLocationView(completion: ((Bool) -> Void)? = nil){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.locationInputView.alpha = 0
+            self.tableView.frame.origin.y = self.view.frame.height
+            self.locationInputView.removeFromSuperview()
+            UIView.animate(withDuration: 0.5, animations: {
+                self.InputActivationView.alpha = 1
+                
+            })
+        }, completion: completion)
+    }
 }
 
 //    MARK:  Map Helper Functions
@@ -266,17 +279,7 @@ extension HomeController : LocationInputViewDelegate {
     
     func dismissLocationInputView() {
         // 뒤로 가기 눌렀을때 table view 가 나오지 않도록
-        
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.locationInputView.alpha = 0
-            self.tableView.frame.origin.y = self.view.frame.height
-        }){ _ in
-            // 애니메이션이 끝나면 다시 inoputactivationView 가 나옴!!
-            self.locationInputView.removeFromSuperview()
-            UIView.animate(withDuration: 0.3, animations: {
-                self.InputActivationView.alpha = 1})
-        }
+        dismissLocationView()
     }
     
     
@@ -313,6 +316,19 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
             cell.placemark = searchResults[indexPath.row]
         }
         return cell
+    }
+    
+    //셀이 선택됐을때 실행할 액션
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPlacemark = searchResults[indexPath.row]
+        dismissLocationView { _ in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = selectedPlacemark.coordinate
+            self.mapView.addAnnotation(annotation)
+            //SelectAnnotation : Pin 크기를 더 크게 만들어줌!
+            self.mapView.selectAnnotation(annotation, animated: true)
+            
+        }
     }
     
     
