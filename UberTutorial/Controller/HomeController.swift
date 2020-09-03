@@ -59,7 +59,7 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         enableLocationSevices()
         checkIfUserIsLoggedIn()
-        signOut()
+//        signOut()
     }
     
 //    MARK:  Selector
@@ -69,12 +69,9 @@ class HomeController: UIViewController {
         case .showMenu:
             print("DEBUG: Handle show menu..")
         case .dismissActionview:
+            removeAnnotationsAndOverlays()
+            mapView.showAnnotations(mapView.annotations, animated: true)
             
-            mapView.annotations.forEach { (annotation) in
-                if let anno = annotation as? MKPointAnnotation {
-                    mapView.removeAnnotation(anno)
-                }
-            }
             UIView.animate(withDuration: 0.3) {
                 self.InputActivationView.alpha = 1
                 self.configureActionButton(config: .showMenu)
@@ -217,7 +214,7 @@ class HomeController: UIViewController {
         
         tableView.register(LocationCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 60
-        // footterview: 5줄말 표현하려고 할때 아래 줄을 공백으로 두는것!!
+        // footterview: 5줄만 표현하려고 할때 아래 줄을 공백으로 두는것!!
         tableView.tableFooterView = UIView()
         
         let height = view.frame.height - locationInputViewHeight
@@ -228,7 +225,7 @@ class HomeController: UIViewController {
     }
     
     // 뒤로가기를 눌렀을떄 InputView가 사라짐
-    func dismissLocationView(completion: ((Bool) -> Void)? = nil){
+func dismissLocationView(completion: ((Bool) -> Void)? = nil){
         UIView.animate(withDuration: 0.3, animations: {
             self.locationInputView.alpha = 0
             self.tableView.frame.origin.y = self.view.frame.height
@@ -274,9 +271,20 @@ private extension HomeController {
             self.route = response.routes[0]
             guard let polyline = self.route?.polyline else { return }
             self.mapView.addOverlay(polyline)
-            
         }
         
+    }
+    
+    func removeAnnotationsAndOverlays() {
+        mapView.annotations.forEach { (annotation) in
+            if let anno = annotation as? MKPointAnnotation {
+                mapView.removeAnnotation(anno)
+            }
+        }
+        
+        if mapView.overlays.count > 0 {
+            mapView.removeOverlay(mapView.overlays[0])
+        }
     }
 }
 
@@ -418,10 +426,13 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
             annotation.coordinate = selectedPlacemark.coordinate
             self.mapView.addAnnotation(annotation)
             //SelectAnnotation : Pin 크기를 더 크게 만들어줌!
-            self.mapView .selectAnnotation(annotation, animated: true)
+            self.mapView.selectAnnotation(annotation, animated: true)
             
+            //Annotation 중에서 Driver annotation 을 제외한 User의 Annotation을 경로 표기에 활용한다.
+            let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self) })
+            
+            self.mapView.showAnnotations(annotations, animated: true)
         }
+        
     }
-    
-    
 }

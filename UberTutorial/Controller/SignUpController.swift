@@ -130,7 +130,7 @@ class SignUpController : UIViewController {
             
             let values = ["email" : email, "fullname" : fullname, "accountType" : accountTypeIndex] as [String : Any]
             
-            var geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+//            var geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
             
             // accountType이 1일 경우 ( Driver 일경우 , 아래와 같이 위치 정보를 받아온다)
             if accountTypeIndex == 1{

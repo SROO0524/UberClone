@@ -98,6 +98,8 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else {return}
         guard let password = passWordTextField.text else {return}
         
+        print("러그인이 되나")
+        
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print("DEBUG:Failed to log user in with error \(error.localizedDescription)")
