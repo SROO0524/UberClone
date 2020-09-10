@@ -25,6 +25,7 @@
 		DE7BD46024E687F4004F0881 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD45F24E687F4004F0881 /* User.swift */; };
 		DE7BD46224E699D3004F0881 /* Locatiohandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD46124E699D3004F0881 /* Locatiohandler.swift */; };
 		DE7BD46424E9425F004F0881 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD46324E9425F004F0881 /* DriverAnnotation.swift */; };
+		DE8E80B32500C61100DDAAC2 /* RideActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E80B22500C61100DDAAC2 /* RideActionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		DE7BD45F24E687F4004F0881 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE7BD46124E699D3004F0881 /* Locatiohandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatiohandler.swift; sourceTree = "<group>"; };
 		DE7BD46324E9425F004F0881 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
+		DE8E80B22500C61100DDAAC2 /* RideActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideActionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				DE7BD41124E1906B004F0881 /* LocationInputActivationView.swift */,
 				DE7BD41324E2544E004F0881 /* LocationInputView.swift */,
 				DE7BD41524E270B1004F0881 /* LocationCell.swift */,
+				DE8E80B22500C61100DDAAC2 /* RideActionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				DE7BD41624E270B2004F0881 /* LocationCell.swift in Sources */,
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
 				DE7BD46024E687F4004F0881 /* User.swift in Sources */,
+				DE8E80B32500C61100DDAAC2 /* RideActionView.swift in Sources */,
 				DE7BD41824E2E218004F0881 /* Service.swift in Sources */,
 				DE7BD46224E699D3004F0881 /* Locatiohandler.swift in Sources */,
 				DE7BD41224E1906B004F0881 /* LocationInputActivationView.swift in Sources */,

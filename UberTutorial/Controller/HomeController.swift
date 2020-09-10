@@ -33,6 +33,7 @@ class HomeController: UIViewController {
     
     // 지도 위에 검색 바 
     private let InputActivationView = LocationInputActivationView()
+    private let rideActionView = RideActionView()
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
     private var searchResults = [MKPlacemark]()
@@ -161,6 +162,7 @@ class HomeController: UIViewController {
     
     func configureUI() {
         configureMapView()
+        configureRideActionView()
         
         view.addSubview(actionButton)
         actionButton.anchor(top:view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 20, paddingLeft: 16, width: 30, height: 30 )
@@ -207,6 +209,13 @@ class HomeController: UIViewController {
             })
         }
     }
+    
+    
+    func configureRideActionView() {
+        view.addSubview(rideActionView)
+        rideActionView.frame = CGRect(x: 0, y: view.frame.height - 300, width: view.frame.width, height: 300)
+    }
+    
     
     func configureTableView() {
         tableView.delegate = self
