@@ -28,7 +28,7 @@ class LocationInputActivationView : UIView {
     
     private let placeholderLabel: UILabel = {
         let label = UILabel()
-        label.text = "Where to?"
+        label.text = "어디로 갈까요?"
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .darkGray
         return label
@@ -54,13 +54,15 @@ class LocationInputActivationView : UIView {
         //Indicator 를 Tap 했을때 액션 주기
         let tap = UITapGestureRecognizer(target: self, action: #selector(presentLocationInputView))
         addGestureRecognizer(tap)
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+         
     //    MARK:  Selectors
+    
     
     @objc func presentLocationInputView(){
         delegate?.presentLocationInputView()

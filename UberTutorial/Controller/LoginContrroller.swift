@@ -32,7 +32,7 @@ class LoginController: UIViewController {
     }()
     
     private let emailTextField : UITextField = {
-        return UITextField().textField(withPlaceholder: "Email", isSecureTextEentry: false)
+        return UITextField().textField(withPlaceholder: "이메일", isSecureTextEentry: false)
     }()
     
     
@@ -43,14 +43,14 @@ class LoginController: UIViewController {
     }()
     
     private let passWordTextField : UITextField = {
-        return UITextField().textField(withPlaceholder: "PassWord", isSecureTextEentry: true)
+        return UITextField().textField(withPlaceholder: "비밀번호", isSecureTextEentry: true)
     }()
     
 
     
     private let loginButton: AuthButton = {
         let button = AuthButton(type: .system)
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("로그인", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
@@ -61,10 +61,10 @@ class LoginController: UIViewController {
     let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
         
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+        let attributedTitle = NSMutableAttributedString(string: "아직 계정이 없나요?", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
             NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
-        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes:
+        attributedTitle.append(NSAttributedString(string: "회원가입", attributes:
             [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
              NSAttributedString.Key.foregroundColor: UIColor.mainBlue]))
         

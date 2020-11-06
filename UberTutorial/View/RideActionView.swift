@@ -14,8 +14,9 @@ class RideActionView: UIView {
     
    private let titleLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "Test Address Title"
+        label.textColor = .black
         label.textAlignment = .center
         return label
     }()
@@ -45,6 +46,24 @@ class RideActionView: UIView {
         return view
     }()
 
+    private let uberXLabel : UILabel = {
+       let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.text = "UberX"
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
+    private let actionButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .black
+        button.setTitle("현재위치 확인", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        return button
+    }()
     
     
     
@@ -72,11 +91,25 @@ class RideActionView: UIView {
         infoview.setDimensions(height: 60, width: 60)
         infoview.layer.cornerRadius = 60/2
         
+        addSubview(uberXLabel)
+        uberXLabel.anchor(top: infoview.bottomAnchor, paddingTop: 8)
+        uberXLabel.centerX(inView: self)
         
+        let seperatorView = UIView()
+        seperatorView.backgroundColor = .lightGray
+        addSubview(seperatorView)
+        seperatorView.anchor(top: uberXLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 4, height: 0.75)
+        
+        addSubview(actionButton)
+        actionButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 12, paddingBotton: 12, paddingRight: 12, height: 50)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func actionButtonPressed() {
+        print("DEBUG: 123")
     }
     
 }

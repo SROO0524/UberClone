@@ -18,7 +18,6 @@ class LocationCell: UITableViewCell {
         didSet {
             titlaLabel.text = placemark?.name
             addressLabel.text = placemark?.address
-
         }
     }
     

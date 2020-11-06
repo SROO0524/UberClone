@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-// extention 을 UIView 로 설정하면 UIKit 안에 있는 모든 기능에서 내가 설정한 아래의
+// extension 을 UIView 로 설정하면 UIKit 안에 있는 모든 기능에서 내가 설정한 아래의
 // 기능을 마음대로 가져다 쓸수 있다! **핵신기**
 // 아래 코드는 어느 코드에서든 자유롭게 사용가능함!! 다른 프로젝트에도 붙여쓰면된다아~
 

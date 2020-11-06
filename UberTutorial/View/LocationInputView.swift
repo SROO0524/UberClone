@@ -61,7 +61,7 @@ class LocationInputView: UIView {
     
     private lazy var startingLocationTextField : UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Current Location"
+        tf.placeholder = "현재 위치"
         tf.backgroundColor = .groupTableViewBackground
         tf.font = UIFont.systemFont(ofSize: 14)
         
@@ -76,7 +76,7 @@ class LocationInputView: UIView {
     
     private lazy var destinationLocationTextField : UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Enter a destination.."
+        tf.placeholder = "목적지를 입력하세요..."
         tf.backgroundColor = .lightGray
         tf.returnKeyType = .search
         tf.font = UIFont.systemFont(ofSize: 14)

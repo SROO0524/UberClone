@@ -16,9 +16,9 @@ struct User {
     
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
-        self.fullname = dictionary["fullname"] as? String ?? ""
-        self.email = dictionary["email"] as? String ?? ""
-        self.accountType = dictionary["accountType"] as? Int ?? 0
+        self.fullname = dictionary["이름"] as? String ?? ""
+        self.email = dictionary["이메일"] as? String ?? ""
+        self.accountType = dictionary["계정타입"] as? Int ?? 0
         
     }
 }

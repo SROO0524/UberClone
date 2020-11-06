@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import MapKit
+import FirebaseAuth
 
 private let reuseIdentifier = "LocationCell"
 private let annotationIdentifier = "DriverAnnotation"
@@ -62,6 +63,11 @@ class HomeController: UIViewController {
         checkIfUserIsLoggedIn()
 //        signOut()
     }
+    
+    // 키보드 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+   }
     
 //    MARK:  Selector
     

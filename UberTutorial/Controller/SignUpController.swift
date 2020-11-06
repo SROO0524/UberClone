@@ -37,11 +37,11 @@ class SignUpController : UIViewController {
 
     
     private let emailTextField : UITextField = {
-        return UITextField().textField(withPlaceholder: "Email", isSecureTextEentry: false)
+        return UITextField().textField(withPlaceholder: "이메일", isSecureTextEentry: false)
     }()
     
     private let fullNameTextField : UITextField = {
-           return UITextField().textField(withPlaceholder: "Full Name", isSecureTextEentry: false)
+           return UITextField().textField(withPlaceholder: "이름", isSecureTextEentry: false)
        }()
     
     
@@ -59,11 +59,11 @@ class SignUpController : UIViewController {
     
     
     private let passWordTextField : UITextField = {
-        return UITextField().textField(withPlaceholder: "PassWord", isSecureTextEentry: true)
+        return UITextField().textField(withPlaceholder: "비밀번호", isSecureTextEentry: true)
     }()
     
     private let accountTypeSegmentControl : UISegmentedControl = {
-        let sc = UISegmentedControl(items: ["Rider", "Driver"])
+        let sc = UISegmentedControl(items: ["승객", "기사"])
         sc.backgroundColor = .backgroundColor
         sc.tintColor = UIColor(white: 1, alpha: 0.87)
         sc.selectedSegmentIndex = 0
@@ -72,7 +72,7 @@ class SignUpController : UIViewController {
     
     private let signUPButton: AuthButton = {
         let button = AuthButton(type: .system)
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("회원가입", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
@@ -81,10 +81,10 @@ class SignUpController : UIViewController {
     let alreadyHaveAccountButton: UIButton = {
            let button = UIButton(type: .system)
            
-           let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
+           let attributedTitle = NSMutableAttributedString(string: "계정이 있으신가요? ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),
                NSAttributedString.Key.foregroundColor: UIColor.lightGray])
            
-           attributedTitle.append(NSAttributedString(string: "Log In", attributes:
+           attributedTitle.append(NSAttributedString(string: "로그인", attributes:
                [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16),
                 NSAttributedString.Key.foregroundColor: UIColor.mainBlue]))
            
@@ -128,7 +128,7 @@ class SignUpController : UIViewController {
             
             guard let uid = result?.user.uid else { return }
             
-            let values = ["email" : email, "fullname" : fullname, "accountType" : accountTypeIndex] as [String : Any]
+            let values = ["이메일" : email, "이름" : fullname, "계정타입" : accountTypeIndex] as [String : Any]
             
 //            var geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
             
