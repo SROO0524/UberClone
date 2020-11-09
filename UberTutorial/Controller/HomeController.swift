@@ -466,7 +466,7 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
             //Annotation 중에서 Driver annotation 을 제외한 User의 Annotation을 경로 표기에 활용한다.
             let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self) })
             
-            self.mapView.showAnnotations(annotations, animated: true)
+            self.mapView.zoomToFit(annotation: annotations)
             
             // 경로를 선택 완료 했을때 RideActionView 가 나타남! (shouldShow 파라미터를 받아서 작동)
             // destination 파라미터를 받아 선택한 셀의 위치명과 주소 데이터를 RideActionView 에 전달!

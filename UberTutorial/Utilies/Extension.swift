@@ -163,3 +163,22 @@ extension MKPlacemark {
         }
     }
 }
+
+// HomeController에서 경로 표기시 RideActionView 가 경로를 가리지 않도록 위치 조정
+extension MKMapView {
+    func zoomToFit(annotation : [MKAnnotation]) {
+        var zoomRect = MKMapRect.null
+        
+        annotation.forEach { (annotation) in
+            let annotationPoint = MKMapPoint(annotation.coordinate)
+            let pointRect = MKMapRect(x: annotationPoint.x, y: annotationPoint.y, width: 0.01, height: 0.01)
+            zoomRect = zoomRect.union(pointRect)
+        }
+        
+        // mapView 내에 Padding 값을 주어 RideActionView 가 경로를 가지리 않도록 조정
+        let insets = UIEdgeInsets(top: 100, left: 100, bottom: 250, right: 100)
+        setVisibleMapRect(zoomRect, edgePadding: insets, animated: true)
+        
+        
+    }
+}
