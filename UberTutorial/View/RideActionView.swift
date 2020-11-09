@@ -65,9 +65,7 @@ class RideActionView: UIView {
         return button
     }()
     
-    
-    
-    
+
 //    MARK:  LifeCycle
     
     override init(frame: CGRect) {

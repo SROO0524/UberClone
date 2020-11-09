@@ -39,6 +39,7 @@ class HomeController: UIViewController {
     private let tableView = UITableView()
     private var searchResults = [MKPlacemark]()
     private final let locationInputViewHeight : CGFloat = 200
+    private final let rideActionViewHeight : CGFloat = 300
     private var actionButtonConfig = ActionButtonConfiguration()
     private var route : MKRoute?
     
@@ -82,6 +83,8 @@ class HomeController: UIViewController {
             UIView.animate(withDuration: 0.3) {
                 self.InputActivationView.alpha = 1
                 self.configureActionButton(config: .showMenu)
+                // actionButton을 누르면 RideActionView 사라짐!
+                self.animateRideActionView(shouldShow: false)
             }
         }
     }
@@ -219,7 +222,7 @@ class HomeController: UIViewController {
     
     func configureRideActionView() {
         view.addSubview(rideActionView)
-        rideActionView.frame = CGRect(x: 0, y: view.frame.height - 300, width: view.frame.width, height: 300)
+        rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
     }
     
     
@@ -247,7 +250,19 @@ func dismissLocationView(completion: ((Bool) -> Void)? = nil){
             self.locationInputView.removeFromSuperview()
         }, completion: completion)
     }
+    
+    // 목적지 선택 후 홈으로 돌아왔을때 RideActionView이 사라지도록 하는 Action
+    func animateRideActionView(shouldShow: Bool) {
+        let yOrigin = shouldShow ? self.view.frame.height - self.rideActionViewHeight :
+            self.view.frame.height
+        
+        UIView.animate(withDuration: 0.3) {
+            self.rideActionView.frame.origin.y = yOrigin
+        }
+    }
 }
+
+
 
 //    MARK:  Mapview Helper Functions
 
@@ -447,6 +462,9 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
             let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self) })
             
             self.mapView.showAnnotations(annotations, animated: true)
+            
+            // 경로를 선택 완료 했을때 RideActionView 가 나타남! (shouldShow 파라미터를 받아서 작동)
+            self.animateRideActionView(shouldShow: true)
         }
         
     }
