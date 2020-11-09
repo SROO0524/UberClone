@@ -7,10 +7,19 @@
 //
 
 import UIKit
+import MapKit
 
 class RideActionView: UIView {
 
 //    MARK: Properties
+    
+    // titlelabel 과 addressLabel에 선택된 실제 데이터를 넘겨줌!
+    var destination : MKPlacemark? {
+        didSet {
+            titleLabel.text = destination?.name
+            addressLabel.text = destination?.address
+        }
+    } 
     
    private let titleLabel : UILabel = {
         let label = UILabel()

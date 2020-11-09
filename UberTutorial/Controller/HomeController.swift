@@ -252,9 +252,14 @@ func dismissLocationView(completion: ((Bool) -> Void)? = nil){
     }
     
     // 목적지 선택 후 홈으로 돌아왔을때 RideActionView이 사라지도록 하는 Action
-    func animateRideActionView(shouldShow: Bool) {
+    func animateRideActionView(shouldShow: Bool, destination : MKPlacemark? = nil) {
         let yOrigin = shouldShow ? self.view.frame.height - self.rideActionViewHeight :
             self.view.frame.height
+        
+        if shouldShow {
+            guard let destination = destination else { return }
+            rideActionView.destination = destination
+        }
         
         UIView.animate(withDuration: 0.3) {
             self.rideActionView.frame.origin.y = yOrigin
@@ -464,7 +469,9 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
             self.mapView.showAnnotations(annotations, animated: true)
             
             // 경로를 선택 완료 했을때 RideActionView 가 나타남! (shouldShow 파라미터를 받아서 작동)
-            self.animateRideActionView(shouldShow: true)
+            // destination 파라미터를 받아 선택한 셀의 위치명과 주소 데이터를 RideActionView 에 전달!
+            self.animateRideActionView(shouldShow: true, destination: selectedPlacemark)
+
         }
         
     }
