@@ -63,6 +63,8 @@ class HomeController: UIViewController {
         enableLocationSevices()
         checkIfUserIsLoggedIn()
 //        signOut()
+        
+        
     }
     
     // 키보드 내리기
@@ -222,6 +224,7 @@ class HomeController: UIViewController {
     
     func configureRideActionView() {
         view.addSubview(rideActionView)
+        rideActionView.delegete = self
         rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
     }
     
@@ -475,4 +478,21 @@ extension HomeController : UITableViewDelegate, UITableViewDataSource {
         }
         
     }
+}
+
+
+extension HomeController : RideActionViewDelegate {
+    func uploadTrip(_ view: RideActionView) {
+        guard let pickupCoordinates = locationManager?.location?.coordinate else { return }
+        guard let destinationCoordinates = view.destination?.coordinate else {return}
+        Service.shared.uploadTrip(pickupCoordinates, destinationCoordinates) { (err, ref) in
+            if let error = err {
+                print("DEBUG: Failed to upload trip with error \(error)")
+                return
+            }
+            print("DEBUG: Did upload trip successfully")
+        }
+        
+    }
+    
 }

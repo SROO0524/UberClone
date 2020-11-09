@@ -8,13 +8,17 @@
 
 import Firebase
 import GeoFire
+import FirebaseAuth
 
 let DB_REF = Database.database().reference()
-// REF_USERS >> DB에 있는 Reference 중에 Child 데이터 중에서 users 를 찾아라!
+// REF_USERS >> DB에 있는 Reference 중에 Child 데이터 중에서 users의 정보를 저장하는 Directory
 let REF_USERS = DB_REF.child("users")
 
-// REF_USERS >> DB에 있는 Reference 중에 Child 데이터 중에서 driverLocation 를 찾아라!
+// REF_USERS >> DB에 있는 Reference 중에 Child 데이터 중에서 driverLocation의 위치를 저장하는 Directory
 let REF_DRIVER_LOCATIONS = DB_REF.child("driver-locations")
+
+// REF_TRIPS >> DB에 사용자의 위치정보와 도착지 정보를 임시로 저장할 Directory
+let REF_TRIPS = DB_REF.child("trips")
 
 struct Service {
     // Firebase에 저장된 내 정보는 한번만 불러오면 되기 때문에 Service를 static let 으로 인스턴스화 한 후 사용!
@@ -44,6 +48,19 @@ struct Service {
                 
             })
         }
+    }
+    
+    // 도착지 정보와 현재 위치 정보를 경로화 하여 Firebase Database 에 upload
+    func uploadTrip(_ pickupCoordinates : CLLocationCoordinate2D, _ destinationCoordinates: CLLocationCoordinate2D, completion: @escaping(Error?, DatabaseReference) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        let pickupArray = [pickupCoordinates.latitude, pickupCoordinates.longitude]
+        let destinationArray = [destinationCoordinates.latitude, destinationCoordinates.longitude]
+        
+        let values = ["pickupCoordinates": pickupArray,
+                      "destinationCoordinates": destinationArray]
+        
+        REF_TRIPS.child(uid).updateChildValues(values, withCompletionBlock: completion)
     }
     
 }

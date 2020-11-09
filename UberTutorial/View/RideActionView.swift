@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 
+
+protocol RideActionViewDelegate: class {
+    func uploadTrip(_ view: RideActionView)
+}
+
 class RideActionView: UIView {
 
 //    MARK: Properties
@@ -20,6 +25,8 @@ class RideActionView: UIView {
             addressLabel.text = destination?.address
         }
     } 
+    
+    weak var delegete : RideActionViewDelegate?
     
    private let titleLabel : UILabel = {
         let label = UILabel()
@@ -115,8 +122,9 @@ class RideActionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Delegate 를 발생시키는 곳
     @objc func actionButtonPressed() {
-        print("DEBUG: 123")
+        delegete?.uploadTrip(self)
     }
     
 }
