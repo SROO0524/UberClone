@@ -14,6 +14,7 @@
 		DE235D4C24DD350C00C2221A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE235D4A24DD350C00C2221A /* LaunchScreen.storyboard */; };
 		DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D5A24DD36B000C2221A /* LoginContrroller.swift */; };
 		DE235D5D24DD420100C2221A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE235D5C24DD420100C2221A /* Extension.swift */; };
+		DE5057C425760BEF004AEA6E /* Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5057C325760BEF004AEA6E /* Trips.swift */; };
 		DE7BD40824DEC38C004F0881 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40724DEC38C004F0881 /* SignUpController.swift */; };
 		DE7BD40A24E12C61004F0881 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BD40924E12C61004F0881 /* AuthButton.swift */; };
 		DE7BD40E24E13B5B004F0881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */; };
@@ -40,6 +41,7 @@
 		DE235D4D24DD350C00C2221A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE235D5A24DD36B000C2221A /* LoginContrroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContrroller.swift; sourceTree = "<group>"; };
 		DE235D5C24DD420100C2221A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DE5057C325760BEF004AEA6E /* Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trips.swift; sourceTree = "<group>"; };
 		DE7BD40724DEC38C004F0881 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		DE7BD40924E12C61004F0881 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DE7BD40D24E13B5B004F0881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				DE7BD45F24E687F4004F0881 /* User.swift */,
 				DE7BD46324E9425F004F0881 /* DriverAnnotation.swift */,
+				DE5057C325760BEF004AEA6E /* Trips.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				DE235D5B24DD36B000C2221A /* LoginContrroller.swift in Sources */,
 				DE235D4024DD350800C2221A /* AppDelegate.swift in Sources */,
 				DE7BD41624E270B2004F0881 /* LocationCell.swift in Sources */,
+				DE5057C425760BEF004AEA6E /* Trips.swift in Sources */,
 				DE235D4224DD350800C2221A /* SceneDelegate.swift in Sources */,
 				DE7BD46024E687F4004F0881 /* User.swift in Sources */,
 				DE8E80B32500C61100DDAAC2 /* RideActionView.swift in Sources */,
