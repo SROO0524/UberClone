@@ -63,8 +63,7 @@ class HomeController: UIViewController {
         enableLocationSevices()
         checkIfUserIsLoggedIn()
 //        signOut()
-        
-        
+
     }
     
     // 키보드 내리기
@@ -102,6 +101,11 @@ class HomeController: UIViewController {
     }
     
     func fetchDrivers() {
+        guard user?.accountType == .passenger else {
+            print("DEBUG: User account type is \(user?.accountType)")
+            return
+            
+        }
         guard let location = locationManager?.location else { return }
         Service.shared.fetchDrivers(location: location) { (driver) in
             guard let coordinate = driver.location?.coordinate else { return }
@@ -126,7 +130,7 @@ class HomeController: UIViewController {
         }
     }
     
-    // 로그인이 되어 있으면 HomeVieW 로 이동하고, 로그인이 안되어 있으면 LoginView 나오게함.
+    // 로그인이 되어 있으면 HomeVieW 로 이동하고, 로그인이 안되어 있으면 LoginView 나오게함
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
             DispatchQueue.main.async {
